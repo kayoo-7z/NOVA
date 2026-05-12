@@ -3,7 +3,7 @@ export const getArticles = (req, res) => {
         { 
             id: 1, 
             title: "Panduan Gizi NovaIQ", 
-            category: "Edukasi" 
+            category: "Edukasi",
         }
     ]);
 };

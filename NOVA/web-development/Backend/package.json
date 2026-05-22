@@ -6,8 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node  src/server.js",
+    "start:dev": "nodemon src/server.js",
     "dev": "node --watch src/server.js",
-    "lint": "eslint src/**"
+    "lint": "eslint src/**",
+    "migrate:up": "node-pg-migrate up",
+    "migrate:down": "node-pg-migrate down",
+    "migrate:create": "node-pg-migrate create"
   },
   "keywords": [],
   "author": "",
@@ -18,11 +22,15 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "joi": "^18.2.1",
+    "jsonwebtoken": "^9.0.3",
     "pg": "^8.20.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.3.0",
-    "globals": "^17.6.0"
+    "globals": "^17.6.0",
+    "node-pg-migrate": "^8.0.4",
+    "nodemon": "^3.1.14"
   }
 }

@@ -1,6 +1,5 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
-import process from 'node:process';
 
 dotenv.config();
 
@@ -9,14 +8,14 @@ const { Pool } = pg;
 // Konfigurasi koneksi ke PostgreSQL
 const pool = new Pool({
   user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  database: process.env.DB_NAME,
 });
 
 pool.on('connect', () => {
-  console.log('Terhubung ke Database PostgreSQL NOVA!');
+  console.log('Terhubung ke Database PostgreSQL!');
 });
 
 pool.on('error', (err) => {

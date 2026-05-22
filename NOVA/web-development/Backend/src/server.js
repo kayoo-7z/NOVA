@@ -1,43 +1,43 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import process from 'node:process';
 import pool from './config/db.js';
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
-// Import route 
-import articleRoutes from './routers/articleroutes1.js';
-import { register } from './controllers/authController.js';
+import authRoutes from './routes/authRoutes.js';
+import errorMiddleware from './middlewares/errorMiddleware.js';
 
-// Konfigurasi dotenv
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5001;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use('/api', articleRoutes);
-app.post('/api/auth/register', register);
+pool.query('SELECT NOW()')
+  .then((result) => {
+    console.log('Database connected:', result.rows[0]);
+  })
+  .catch((error) => {
+    console.error('Database connection error:', error.message);
+  });
 
-// Root Endpoint
-app.get('/', (req, res) => {
-    res.json({ 
-        message: "Server NOVA Berjalan dengan ES Modules!!! ",
-        status: "Active"
-    });
+const host = process.env.HOST || 'localhost';
+const port = process.env.PORT || 3000;
+
+// Routes
+app.use('/api/auth', authRoutes);
+
+// 404 handler
+app.use((req, res) => {
+  return res.status(404).json({
+    status: 'failed',
+    message: 'Resource tidak ditemukan',
+  });
 });
 
-app.listen(PORT, async() => {
-    console.log(`Server running on http://localhost:${PORT}`);
+// Global error handler
+app.use(errorMiddleware);
 
-    try {
-        const res = await pool.query('SELECT NOW()');
-        console.log('🐘 Terhubung ke PostgreSQL! Waktu DB:', res.rows[0].now);
-    } catch (err) {
-     console.error('❌ Gagal terhubung ke Database:', err.message);
-    }
-
+app.listen(port, host, () => {
+  console.log(`NOVA API berjalan di http://${host}:${port}`);
 });

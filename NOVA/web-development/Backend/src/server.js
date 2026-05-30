@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 import authRoutes from './routes/authRoutes.js';
+import profileRoutes from './routes/profileRoutes.js';
+import articleRoutes from './routes/articleRoutes.js';
 import errorMiddleware from './middlewares/errorMiddleware.js';
 
 dotenv.config();
@@ -26,6 +28,8 @@ const port = process.env.PORT || 3000;
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api', profileRoutes);
+app.use('/api', articleRoutes);
 
 // 404 handler
 app.use((req, res) => {

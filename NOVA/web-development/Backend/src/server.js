@@ -6,6 +6,7 @@ import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
 import articleRoutes from './routes/articleRoutes.js';
+import predictRoutes from './routes/predictRoutes.js';
 import errorMiddleware from './middlewares/errorMiddleware.js';
 
 dotenv.config();
@@ -30,6 +31,7 @@ const port = process.env.PORT || 3000;
 app.use('/api/auth', authRoutes);
 app.use('/api', profileRoutes);
 app.use('/api', articleRoutes);
+app.use('/api', predictRoutes);
 
 // 404 handler
 app.use((req, res) => {

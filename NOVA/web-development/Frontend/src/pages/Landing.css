@@ -1,0 +1,899 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  font-family: inherit;
+}
+
+.nova-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+/* NAVBAR */
+
+.nova-navbar {
+  width: 100%;
+  height: 88px;
+  padding: 0 46px;
+  background:
+    linear-gradient(
+      132deg,
+      #2687d7 50%,
+      #5db0ef 87%,
+      #5db0ef 58%,
+      #5db0ef 10%
+    );
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.nova-logo {
+  width: fit-content;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.nova-nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+}
+
+.nova-ai-nav-button {
+  justify-self: end;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #10005d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nova-ai-nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+}
+
+.nova-nav-menu button,
+.nova-login-button {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nova-login-button {
+  justify-self: end;
+}
+
+/* HERO */
+
+.nova-hero {
+  width: 100%;
+  min-height: 365px;
+  background:
+    linear-gradient(
+      132deg,
+      #2687d7 40%,
+      #5db0ef 70%,
+      #5db0ef 58%,
+      #5db0ef 100%
+    );
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+}
+
+.nova-hero-content {
+  padding-left: 113px;
+  padding-top: 66px;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+}
+
+.nova-hero-content h1 {
+  margin: 0 0 24px;
+  font-size: 45px;
+  line-height: 1.42;
+  font-weight: 800;
+  text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.35);
+}
+
+.nova-hero-content p {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.45;
+  font-weight: 700;
+  text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.35);
+}
+
+.nova-hero-image-wrapper {
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.nova-hero-image {
+  width: min(420px, 92%);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transform: translateY(1px);
+}
+
+/* FEATURE SECTION */
+
+.nova-feature-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 34px 90px 76px;
+}
+
+.nova-feature-section h2 {
+  margin: 0;
+  text-align: center;
+  color: #000000;
+  font-size: clamp(28px, 2.4vw, 38px);
+  font-weight: 900;
+  line-height: 1.2;
+  text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.28);
+}
+
+.nova-feature-layout {
+  max-width: 1060px;
+  margin: 40px auto 0;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 78px;
+  align-items: center;
+}
+
+.nova-phone-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nova-phone-frame {
+  width: 220px;
+  height: 390px;
+  border: 7px solid #3f3f3f;
+  border-radius: 34px;
+  background: #ffffff;
+  box-shadow:
+    inset 0 0 0 2px #8a8a8a,
+    0 0 0 2px #8a8a8a;
+  position: relative;
+}
+
+.nova-phone-notch {
+  width: 88px;
+  height: 18px;
+  background: #3f3f3f;
+  border-radius: 0 0 16px 16px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nova-phone-frame::before {
+  content: "";
+  width: 5px;
+  height: 56px;
+  background: #3f3f3f;
+  border-radius: 10px;
+  position: absolute;
+  left: -12px;
+  top: 82px;
+}
+
+.nova-phone-frame::after {
+  content: "";
+  width: 5px;
+  height: 74px;
+  background: #3f3f3f;
+  border-radius: 10px;
+  position: absolute;
+  right: -12px;
+  top: 112px;
+}
+
+.nova-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 68px;
+}
+
+.nova-feature-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  align-items: center;
+  gap: 28px;
+}
+
+.nova-feature-icon {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  justify-self: center;
+}
+
+.nova-feature-item p {
+  max-width: 540px;
+  margin: 0;
+  color: #00095b;
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+/* BENEFIT */
+
+.nova-benefit-section {
+  width: 100%;
+  background: #d7ecff;
+  padding: 34px 90px 48px;
+}
+
+.nova-benefit-section h2 {
+  margin: 0;
+  text-align: center;
+  color: #000000;
+  font-size: clamp(28px, 2.4vw, 38px);
+  font-weight: 900;
+  line-height: 1.2;
+  text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.28);
+}
+
+.nova-benefit-grid {
+  max-width: 880px;
+  margin: 38px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.nova-benefit-item {
+  text-align: center;
+  color: #00095b;
+}
+
+.nova-benefit-item i {
+  width: 64px;
+  height: 64px;
+  border: 2.5px solid #00095b;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.nova-benefit-item h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.nova-benefit-item p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* AI SHORTCUT AFTER LOGIN */
+
+.nova-ai-shortcut-section {
+  width: 100%;
+  background: #d7ecff;
+  padding: 32px 78px 48px;
+}
+
+.nova-ai-shortcut-card {
+  width: 100%;
+  max-width: 820px;
+  min-height: 86px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.28);
+  display: grid;
+  grid-template-columns: 58px 1fr 104px;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 18px;
+  cursor: pointer;
+}
+
+.nova-ai-shortcut-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #006bff;
+  font-size: 32px;
+}
+
+.nova-ai-shortcut-card p {
+  margin: 0;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.nova-ai-shortcut-card button {
+  width: 96px;
+  height: 48px;
+  border: none;
+  border-radius: 5px;
+  background: #e2e2e2;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.nova-ai-shortcut-card:hover {
+  transform: translateY(-1px);
+}
+
+.nova-ai-shortcut-card button:hover {
+  background: #d6d6d6;
+}
+
+/* NEWS */
+
+.nova-news-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 42px 104px 72px;
+}
+
+.nova-news-section h2 {
+  margin: 0;
+  text-align: center;
+  color: #000000;
+  font-size: clamp(28px, 2.4vw, 38px);
+  font-weight: 900;
+  line-height: 1.2;
+  text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.28);
+}
+
+.nova-main-news {
+  max-width: 1000px;
+  margin: 42px auto 0;
+  display: grid;
+  grid-template-columns: 1.25fr 0.9fr;
+  column-gap: 58px;
+  align-items: start;
+}
+
+.nova-main-news-left {
+  width: 100%;
+}
+
+.nova-main-news-left a {
+  display: block;
+  text-decoration: none;
+}
+
+.nova-main-news-left img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+.nova-main-news-left h3 {
+  margin: 18px 0 4px;
+  color: #000000;
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.nova-main-news-left p {
+  margin: 0;
+  color: #000000;
+  font-size: clamp(14px, 1.1vw, 17px);
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.nova-main-news-text {
+  padding-top: 6px;
+}
+
+.nova-main-news-text p {
+  margin: 0;
+  color: #00095b;
+  font-size: clamp(15px, 1.2vw, 19px);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.nova-news-grid {
+  max-width: 1000px;
+  margin: 78px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 86px 90px;
+}
+
+.nova-news-card {
+  width: 100%;
+}
+
+.nova-news-card a {
+  display: block;
+  text-decoration: none;
+}
+
+.nova-news-card img {
+  width: 100%;
+  height: 265px;
+  object-fit: cover;
+  display: block;
+}
+
+.nova-news-card h3 {
+  margin: 16px 0 4px;
+  color: #000000;
+  font-size: clamp(17px, 1.4vw, 22px);
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.nova-news-card p {
+  margin: 0;
+  color: #000000;
+  font-size: clamp(13px, 1vw, 16px);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* FOOTER */
+
+.nova-footer {
+  width: 100%;
+  min-height: 164px;
+  background:
+    linear-gradient(
+      135deg,
+      #2585d5 0%,
+      #2585d5 20%,
+      #86c5f5 100%
+    );
+  padding: 34px 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nova-footer h2 {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.nova-footer p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.nova-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-right: 180px;
+}
+
+.nova-socials a {
+  text-decoration: none;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.nova-socials .fa-instagram {
+  color: #e4405f;
+}
+
+.nova-socials .fa-youtube {
+  color: #ff0000;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+  .nova-navbar {
+    padding: 0 36px;
+  }
+
+  .nova-nav-menu {
+    gap: 70px;
+  }
+
+  .nova-hero-content {
+    padding-left: 64px;
+  }
+
+  .nova-feature-section,
+  .nova-news-section {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+
+  .nova-feature-layout {
+    max-width: 100%;
+    grid-template-columns: 320px 1fr;
+    gap: 58px;
+  }
+
+  .nova-phone-frame {
+    width: 210px;
+    height: 375px;
+  }
+
+  .nova-feature-list {
+    gap: 56px;
+  }
+
+  .nova-main-news,
+  .nova-news-grid {
+    max-width: 100%;
+  }
+
+  .nova-socials {
+    padding-right: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nova-navbar {
+    height: auto;
+    min-height: 82px;
+    padding: 18px 24px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
+  }
+
+  .nova-logo {
+    font-size: 34px;
+  }
+
+  .nova-nav-menu {
+    gap: 44px;
+    flex-wrap: wrap;
+  }
+
+  .nova-ai-nav-button {
+  justify-self: center;
+}
+
+  .nova-login-button {
+    justify-self: center;
+  }
+
+  .nova-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .nova-hero-content {
+    padding: 48px 28px 0;
+    text-align: center;
+  }
+
+  .nova-hero-content h1 {
+    font-size: 28px;
+  }
+
+  .nova-hero-content p {
+    font-size: 17px;
+  }
+
+  .nova-hero-image-wrapper {
+    min-height: 330px;
+  }
+
+  .nova-hero-image {
+    width: min(360px, 92%);
+  }
+
+  .nova-feature-section {
+    padding: 34px 28px 64px;
+  }
+
+  .nova-feature-layout {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    margin-top: 36px;
+  }
+
+  .nova-phone-wrapper {
+    justify-content: center;
+  }
+
+  .nova-phone-frame {
+    width: 200px;
+    height: 360px;
+  }
+
+  .nova-feature-list {
+    gap: 42px;
+  }
+
+  .nova-feature-item {
+    grid-template-columns: 72px 1fr;
+    gap: 22px;
+    align-items: center;
+  }
+
+  .nova-feature-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .nova-feature-item p {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+ .nova-benefit-section {
+  padding: 32px 24px 44px;
+}
+
+.nova-benefit-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px 44px;
+  max-width: 520px;
+}
+
+.nova-benefit-item i {
+  width: 54px;
+  height: 54px;
+  font-size: 23px;
+}
+
+.nova-benefit-item h3 {
+  font-size: 13px;
+}
+
+.nova-benefit-item p {
+  font-size: 10px;
+}
+
+.nova-ai-shortcut-section {
+  padding: 24px 24px 42px;
+}
+
+.nova-ai-shortcut-card {
+  max-width: 100%;
+  min-height: 78px;
+  grid-template-columns: 48px 1fr 82px;
+  gap: 12px;
+  padding: 14px 14px;
+}
+
+.nova-ai-shortcut-icon {
+  width: 42px;
+  height: 42px;
+  font-size: 28px;
+}
+
+.nova-ai-shortcut-card p {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.nova-ai-shortcut-card button {
+  width: 78px;
+  height: 40px;
+  font-size: 12px;
+}
+
+.nova-news-section {
+  padding: 36px 24px 58px;
+}
+
+.nova-main-news {
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.nova-main-news-left img {
+  height: 280px;
+}
+
+.nova-main-news-text {
+  padding-top: 0;
+}
+
+.nova-news-grid {
+  grid-template-columns: 1fr;
+  gap: 46px;
+  margin-top: 54px;
+}
+
+.nova-news-card img {
+  height: 260px;
+}
+
+  .nova-footer {
+    padding: 32px 28px;
+  }
+
+  .nova-socials {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .nova-navbar {
+    padding: 16px 18px;
+  }
+
+  .nova-nav-menu {
+    gap: 26px;
+  }
+
+  .nova-nav-menu button,
+  .nova-login-button {
+    font-size: 15px;
+  }
+
+  .nova-hero-content h1 {
+    font-size: 26px;
+  }
+
+  .nova-hero-content p {
+    font-size: 16px;
+  }
+
+  .nova-feature-section h2,
+  .nova-benefit-section h2,
+  .nova-news-section h2 {
+    font-size: 25px;
+  }
+
+  .nova-feature-section {
+    padding: 30px 22px 56px;
+  }
+
+  .nova-phone-frame {
+    width: 180px;
+    height: 330px;
+  }
+
+  .nova-feature-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .nova-feature-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto;
+  }
+
+  .nova-feature-item p {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .nova-benefit-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 24px;
+}
+
+.nova-benefit-item i {
+  width: 50px;
+  height: 50px;
+  font-size: 21px;
+}
+
+.nova-benefit-item h3 {
+  font-size: 12px;
+}
+
+.nova-benefit-item p {
+  font-size: 9px;
+}
+
+.nova-ai-shortcut-section {
+  padding: 22px 18px 38px;
+}
+
+.nova-ai-shortcut-card {
+  grid-template-columns: 42px 1fr 70px;
+  gap: 10px;
+  padding: 12px;
+}
+
+.nova-ai-shortcut-icon {
+  width: 38px;
+  height: 38px;
+  font-size: 25px;
+}
+
+.nova-ai-shortcut-card p {
+  font-size: 11px;
+}
+
+.nova-ai-shortcut-card button {
+  width: 66px;
+  height: 36px;
+  font-size: 11px;
+}
+
+  .nova-main-news img,
+  .nova-news-card img {
+    height: 220px;
+  }
+
+  .nova-footer {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .nova-socials {
+    flex-direction: row;
+  }
+}

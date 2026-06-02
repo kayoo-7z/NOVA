@@ -51,7 +51,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/landing');
+    navigate('/WelcomePage');
   };
 
   const formatDate = (dateValue) => {

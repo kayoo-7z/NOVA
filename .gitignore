@@ -3,6 +3,11 @@ venv/
 .venv/
 env/
 
+# Environment
+.env
+.env.local
+.env.*
+
 # Node
 node_modules/
 
@@ -32,3 +37,5 @@ Thumbs.db
 *.hdf5
 *.pkl
 saved_model/
+
+.cursor/

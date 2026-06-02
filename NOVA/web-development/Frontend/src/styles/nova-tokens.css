@@ -1,0 +1,25 @@
+:root {
+  --nova-primary: #2196f3;
+  --nova-primary-dark: #1976d2;
+  --nova-secondary: #64b5f6;
+  /* Token gradien welcome — diselaraskan dengan gaya HelpingFS */
+  --nova-gradient-start: #1976d2;
+  --nova-gradient-end: #42a5f5;
+  --nova-welcome-text-on-gradient: #ffffff;
+  --nova-secondary-soft: #e3f2fd;
+  --nova-bg: #f8fbff;
+  --nova-surface: #ffffff;
+  --nova-text: #1f2937;
+  --nova-text-muted: #4b5563;
+  --nova-border: #dbeafe;
+  --nova-shadow: 0 8px 24px rgba(33, 150, 243, 0.12);
+  --nova-radius: 12px;
+  --nova-radius-lg: 20px;
+  --nova-font: 'Poppins', system-ui, sans-serif;
+  --nova-max-width: 72rem;
+  --nova-section-y: clamp(2.5rem, 6vw, 4.5rem);
+  --nova-section-x: clamp(1rem, 4vw, 2rem);
+  --nova-title: clamp(1.75rem, 5vw, 2.75rem);
+  --nova-subtitle: clamp(1rem, 2.5vw, 1.125rem);
+  --nova-body: clamp(0.9375rem, 2vw, 1.0625rem);
+}

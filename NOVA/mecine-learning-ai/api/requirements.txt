@@ -1,0 +1,9 @@
+﻿# NOVA AI service — MVP (dummy inference; TensorFlow added when .h5 is wired)
+fastapi>=0.115.0,<1.0
+uvicorn[standard]>=0.32.0,<1.0
+pydantic>=2.0,<3.0
+
+# Uncomment when integrating stunting_risk_model.h5:
+# tensorflow>=2.15,<3.0
+# numpy>=1.26,<3.0
+# scikit-learn>=1.4,<2.0

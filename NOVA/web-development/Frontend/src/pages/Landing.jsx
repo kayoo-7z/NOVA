@@ -1,113 +1,121 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import familyImage from "../assets/assets1.png";
+import aiIcon from "../assets/Ai-icon.png";
 
 import "./Landing.css";
 
 const articles = [
   {
     id: 1,
-    title: "POTRET STUNTING DI INDONESIA",
+    title: "Gejala Stunting yang Harus Diwaspadai",
     description:
-      "Penurunan stunting di Indonesia menunjukkan progres signifikan, dengan angka prevalensi nasional berhasil ditekan hingga 19,8% pada tahun 2024 sesuai hasil Survei Status Gizi Indonesia (SSGI) 2024, Capaian ini merupakan hasil intervensi yang dilakukan selama lima tahun terakhir, di mana prevalensi stunting menurun secara bertahap dari 27,7% pada 2019. Hal ini menunjukkan upaya meningkatkan kualitas kesehatan anak dan sumber daya manusia di Indonesia berjalan pada sesuai target dan perencanaan.",
-    image: "https://www.badankebijakan.kemkes.go.id/wp-content/uploads/2025/09/V5-Potret-Stunting-Utas-1-683x1024.png",
-    url: "https://www.badankebijakan.kemkes.go.id/potret-stunting-di-indonesia/",
+      "Orang tua perlu waspada terhadap tanda-tanda stunting, terutama jika pertumbuhan tinggi atau panjang badan anak tidak sesuai standar usia. Deteksi dini membantu anak mendapat penanganan lebih cepat.",
+    image: "https://ayosehat.kemkes.go.id/imagex/content/4e28e54eWhatsApp_Image_2023-02-02_at_17.13.37.jpeg",
+    url: "https://ayosehat.kemkes.go.id/gejala-stunting-yang-harus-diwaspadai",
   },
   {
     id: 2,
-    title: "8,6 Juta Keluarga Berisiko Stunting",
+    title: "ASI Eksklusif 6 Bulan untuk Bayi Tumbuh Sehat",
     description:
-      "Keluarga berisiko stunting perlu mendapat perhatian melalui pendampingan, edukasi gizi, dan akses layanan kesehatan yang memadai.",
-    image: familyImage,
-    url: "https://health.detik.com/fotohealth/d-8055083/8-6-juta-keluarga-berisiko-stunting",
+      "ASI eksklusif selama 6 bulan membantu memenuhi kebutuhan gizi bayi. Ibu perlu memahami cara menyusui yang benar agar bayi mendapat asupan optimal.",
+    image: "https://ayosehat.kemkes.go.id/imagex/content/1750733182685a117e9f6dd0.78611671.webp",
+    url: "https://ayosehat.kemkes.go.id/topik-non-penyakit/kesehatan-lainnya/asi",
   },
   {
-    id: 3,
-    title: "Pentingnya Nutrisi untuk Anak Demi Entaskan Stunting",
+      id: 4,
+    title: "Manfaat Penimbangan Balita di Posyandu",
     description:
-      "Nutrisi yang cukup dan seimbang menjadi salah satu faktor penting dalam mendukung pertumbuhan anak dan mencegah risiko stunting.",
-    image: familyImage,
-    url: "https://health.detik.com/fotohealth/d-7755648/pentingnya-nutrisi-untuk-anak-demi-entaskan-stunting",
+      "Penimbangan dan pengukuran anak secara rutin di Posyandu membantu orang tua memantau pertumbuhan anak, mendeteksi masalah gizi lebih awal, dan mencegah risiko stunting.",
+    image: "https://ayosehat.kemkes.go.id/imagex/content/94d31b99aea60c5465df1df409a76a09.webp",
+    url: "https://ayosehat.kemkes.go.id/manfaat-penimbangan-balita-di-posyandu",
   },
   {
-    id: 4,
-    title: "Cegah Stunting, Warga Antusias Ikuti Posyandu",
+      id: 5,
+    title: "Buku Resep MPASI Makanan Lokal",
     description:
-      "Kegiatan posyandu membantu masyarakat memantau kesehatan anak, termasuk berat badan, tinggi badan, dan kebutuhan gizi anak.",
-    image: familyImage,
-    url: "https://health.detik.com/fotohealth/d-7922836/cegah-stunting-warga-cilincing-antusias-ikuti-posyandu",
+      "Panduan resep MPASI berbasis makanan lokal yang membantu orang tua menyiapkan menu bergizi seimbang, termasuk sumber protein hewani untuk mendukung pertumbuhan anak.",
+    image: "https://ayosehat.kemkes.go.id/imagex/content/fd5162dc26ded71db534db7882c3e164.webp",
+    url: "https://ayosehat.kemkes.go.id/buku-resep-makanan-lokal",
   },
   {
-    id: 5,
-    title: "1000 HPK Kunci Cegah Stunting",
+    id: 6,
+    title: "Kebutuhan Nutrisi Ibu Hamil",
     description:
-      "Seribu hari pertama kehidupan menjadi masa penting dalam menentukan kualitas tumbuh kembang anak sejak dini.",
-    image: familyImage,
-    url: "https://ayosehat.kemkes.go.id/1000-hpk-kunci-cegah-stunting",
+      "Selain karbohidrat, protein, dan lemak, ibu hamil juga membutuhkan zat gizi mikro seperti vitamin dan mineral. Pemenuhan nutrisi selama hamil penting untuk kesehatan ibu dan janin.",
+    image: "https://ayosehat.kemkes.go.id/imagex/content/58008aca38308a68d8f274a406b7cf16.webp",
+    url: "https://ayosehat.kemkes.go.id/kebutuhan-nutrisi-ibu-hamil",
+  },
+  {
+    id: 7,
+    title: "Wasting dan Stunting, Sama atau Beda?",
+    description:
+      "Wasting dan stunting sama-sama termasuk masalah gizi anak, tetapi memiliki kondisi dan dampak yang berbeda. Orang tua perlu memahami perbedaannya agar lebih waspada terhadap tumbuh kembang anak.",
+    image: "https://www.unicef.org/indonesia/sites/unicef.org.indonesia/files/styles/hero_extended/public/%5BWasting%5DArtikel-Juli-1.jpg.webp?itok=XNaRHN1b",
+    url: "https://www.unicef.org/indonesia/id/gizi/artikel/stunting-wasting-sama-atau-beda",
+  },
+  {
+    id: 8,
+    title: "Memberi Makan pada Bayi: Kapan, Apa, dan Bagaimana",
+    description:
+      "Pemberian makan pada bayi perlu memperhatikan usia, tekstur, dan kemampuan anak. Tekstur makanan sebaiknya dinaikkan bertahap agar anak belajar makan dengan aman dan cukup gizi.",
+    image: "https://www.idai.or.id/wp-content/uploads/FOTO%20MPASI.jpg",
+    url: "https://www.idai.or.id/artikel/klinik/pengasuhan-anak/memberi-makan-pada-bayi-kapan-apa-dan-bagaimana",
+  },
+  {
+    id: 9,
+    title: "Pentingnya Protein Hewani dalam MPASI",
+    description:
+      "Protein hewani dalam MPASI penting untuk mendukung pertumbuhan anak. Pemberian makanan bergizi tidak cukup hanya membuat anak kenyang, tetapi juga perlu memperhatikan kualitas nutrisi.",
+    image: "https://www.idai.or.id/assets/templates/images/logo.png",
+    url: "https://www.idai.or.id/artikel/seputar-kesehatan-anak/bukan-sekadar-kenyang-pentingnya-protein-hewani-dalam-mp-asi-untuk-cegah-stunting",
+  },
+  {
+      id: 10,
+    title: "Potret Stunting di Indonesia",
+    description:
+      "Prevalensi stunting nasional pada 2024 tercatat turun menjadi 19,8%. Capaian ini menunjukkan adanya progres, tetapi pencegahan dan pemantauan tumbuh kembang anak tetap perlu dilakukan secara konsisten.",
+    image:
+      "https://www.badankebijakan.kemkes.go.id/wp-content/uploads/2025/09/V5-Potret-Stunting-Utas-1-683x1024.png",
+    url: "https://www.badankebijakan.kemkes.go.id/potret-stunting-di-indonesia/",
   },
 ];
 
 const Landing = () => {
   const navigate = useNavigate();
-  const isLoggedIn = Boolean(localStorage.getItem("token"));
 
-  const handleAuthNavigation = () => {
-    if (isLoggedIn) {
-      navigate("/dashboard");
-    } else {
-      navigate("/login");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/", { replace: true });
     }
-  };
+  }, [navigate]);
 
-  const handleFeatureNavigation = () => {
-    const section = document.getElementById("features");
-    section?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleNewsNavigation = () => {
-    const section = document.getElementById("news");
-    section?.scrollIntoView({ behavior: "smooth" });
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/", { replace: true });
   };
 
   return (
     <main className="nova-page">
       <nav className="nova-navbar">
-        <button className="nova-logo" onClick={() => navigate("/")}>
+        <button className="nova-logo" onClick={() => navigate("/landing")}>
           NOVA
         </button>
 
-        <div className="nova-nav-menu">
-          {isLoggedIn ? (
-            <>
-              <button onClick={() => navigate("/novition")}>Scan AI</button>
-              <button onClick={handleNewsNavigation}>Article</button>
-            </>
-          ) : (
-            <>
-              <button onClick={handleFeatureNavigation}>Contoh</button>
-              <button onClick={handleNewsNavigation}>Contoh</button>
-            </>
-          )}
-        </div>
+        <div className="nova-nav-menu"></div>
 
-        {isLoggedIn ? (
-          <button
-            className="nova-ai-nav-button"
-            onClick={() => navigate("/novition")}
-            aria-label="Go to AI Scan"
-            type="button"
-          >
-            <i className="fa-solid fa-robot"></i>
-          </button>
-        ) : (
-          <button
-            className="nova-login-button"
-            onClick={() => navigate("/login")}
-            type="button"
-          >
-            Login/Register
-          </button>
-        )}
+        <button
+          className="nova-logout-button"
+          onClick={handleLogout}
+          aria-label="Logout"
+          title="Logout"
+          type="button"
+        >
+          <i className="fa-solid fa-right-from-bracket"></i>
+          <span>Log out</span>
+        </button>
       </nav>
 
       <section className="nova-hero">
@@ -126,155 +134,74 @@ const Landing = () => {
         </div>
 
         <div className="nova-hero-image-wrapper">
-          <img src={familyImage} alt="Keluarga NOVA" className="nova-hero-image" />
+          <img
+            src={familyImage}
+            alt="Keluarga NOVA"
+            className="nova-hero-image"
+          />
         </div>
       </section>
 
-      {isLoggedIn ? (
-        <section className="nova-ai-shortcut-section" id="features">
-          <div
-            className="nova-ai-shortcut-card"
-            onClick={() => navigate("/novition")}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                navigate("/novition");
-              }
+      <section className="nova-ai-shortcut-section" id="features">
+        <div
+          className="nova-ai-shortcut-card"
+          onClick={() => navigate("/novition")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              navigate("/novition");
+            }
+          }}
+        >
+          <div className="nova-ai-shortcut-icon">
+            <img src={aiIcon} alt="AI Assistant" className="nova-ai-icon" />
+          </div>
+
+          <p>
+            Hallo aku asisten AI, yuk tap aku untuk cari tau tumbuh kembang anak
+          </p>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("/novition");
             }}
           >
-            <div className="nova-ai-shortcut-icon">
-              <i className="fa-solid fa-robot"></i>
-            </div>
-
-            <p>
-              Hallo aku asisten AI, yuk tap aku untuk cari tau tumbuh kembang anak
-            </p>
-
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate("/novition");
-              }}
-            >
-              Chat
-            </button>
-          </div>
-        </section>
-      ) : (
-        <>
-          <section className="nova-feature-section" id="features">
-            <h2>What u get on app</h2>
-
-            <div className="nova-feature-layout">
-              <div className="nova-phone-wrapper">
-                <div className="nova-phone-frame">
-                  <div className="nova-phone-notch"></div>
-                </div>
-              </div>
-
-              <div className="nova-feature-list">
-                <div className="nova-feature-item">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4149/4149670.png"
-                    alt="AI feature icon"
-                    className="nova-feature-icon"
-                  />
-
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </p>
-                </div>
-
-                <div className="nova-feature-item">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/1864/1864593.png"
-                    alt="Baby feature icon"
-                    className="nova-feature-icon"
-                  />
-
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="nova-benefit-section">
-            <h2>Why u should try</h2>
-
-            <div className="nova-benefit-grid">
-              <div className="nova-benefit-item">
-                <i className="fa-solid fa-shield-heart"></i>
-                <h3>Lorem ipsum</h3>
-                <p>dolor sit amet Lorem</p>
-              </div>
-
-              <div className="nova-benefit-item">
-                <i className="fa-solid fa-magnifying-glass-chart"></i>
-                <h3>Lorem ipsum</h3>
-                <p>dolor sit amet Lorem</p>
-              </div>
-
-              <div className="nova-benefit-item">
-                <i className="fa-solid fa-chart-line"></i>
-                <h3>Lorem ipsum</h3>
-                <p>dolor sit amet Lorem</p>
-              </div>
-
-              <div className="nova-benefit-item">
-                <i className="fa-solid fa-newspaper"></i>
-                <h3>Lorem ipsum</h3>
-                <p>dolor sit amet Lorem</p>
-              </div>
-            </div>
-          </section>
-        </>
-      )}
+            Chat
+          </button>
+        </div>
+      </section>
 
       <section className="nova-news-section" id="news">
         <h2>News</h2>
 
-        <div className="nova-main-news">
-          <div className="nova-main-news-left">
-            <a href={articles[0].url} target="_blank" rel="noreferrer">
-              <img src={articles[0].image} alt={articles[0].title} />
-            </a>
-
-            <h3>{articles[0].title}</h3>
-            <p>Lorem ipsum dolor sit amet</p>
-          </div>
-
-          <div className="nova-main-news-text">
-            <p>
-              {articles[0].description}
-            </p>
-          </div>
-        </div>
-
-        <div className="nova-news-grid">
-          {articles.slice(1).map((article) => (
-            <article className="nova-news-card" key={article.id}>
-              <a href={article.url} target="_blank" rel="noreferrer">
+        <div className="nova-news-list">
+          {articles.map((article) => (
+            <article className="nova-news-list-item" key={article.id}>
+              <a
+                href={article.url}
+                target="_blank"
+                rel="noreferrer"
+                className="nova-news-list-image-link"
+              >
                 <img src={article.image} alt={article.title} />
               </a>
 
-              <h3>{article.title}</h3>
-              <p>{article.description}</p>
+              <div className="nova-news-list-content">
+                <h3>{article.title}</h3>
+                <p>{article.description}</p>
+
+                <a
+                  href={article.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="nova-news-read-more"
+                >
+                  Baca Selengkapnya
+                </a>
+              </div>
             </article>
           ))}
         </div>

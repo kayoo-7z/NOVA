@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import "./Novition.css";
 import { FaArrowLeft, FaEdit, FaLock } from "react-icons/fa";
-import { BsRobot, BsLayoutSidebarInset } from "react-icons/bs";
+import { BsLayoutSidebarInset } from "react-icons/bs";
+import aiIcon from "../assets/Ai-icon.png";
 
 export default function Novition() {
   const navigate = useNavigate();
@@ -190,14 +191,14 @@ export default function Novition() {
           <button
             type="button"
             className="back-button"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/landing")}
             aria-label="Back to landing"
           >
             <FaArrowLeft className="header-icon" />
           </button>
 
           <div className="top-icons">
-            <BsRobot className="robot-top" />
+            <img src={aiIcon} alt="AI Assistant" className="robot-top" />
 
             <BsLayoutSidebarInset
               className="header-icon"
@@ -326,7 +327,7 @@ export default function Novition() {
         {result && (
           <section className="bot-section-new">
             <div className="bot-avatar">
-              <BsRobot />
+              <img src={aiIcon} alt="AI Assistant" />
             </div>
 
             <div className="bot-message-new">

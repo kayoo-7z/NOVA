@@ -18,6 +18,7 @@ import NovitionHasil from "./pages/NovitionHasil";
 import LengkapiData from "./pages/LengkapiData";
 import Profile from "./pages/Profile";
 import DetailArtikel from "./pages/DetailArtikel";
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
 
 const MainLayout = () => {
   return (
@@ -73,9 +74,10 @@ function App() {
     <Router>
       <Routes>
         {/* Public pages tanpa Header/Footer lama */}
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/landing" element={<Landing />} />
 
         {/* Halaman Scan AI sendiri, protected tapi TANPA Header/Footer lama */}
         <Route element={<ProtectedRoute />}>

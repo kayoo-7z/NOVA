@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +12,7 @@
   min-height: 100vh;
   background: linear-gradient(180deg, #4ea3ff 0%, #2951b7 45%, #09005d 100%);
   color: #ffffff;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
 }
 
@@ -52,8 +54,10 @@
 }
 
 .robot-top {
-  font-size: 42px;
-  color: #ffffff;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
 }
 
 .askme-title {
@@ -162,13 +166,19 @@
 .bot-avatar {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
   background: #ffffff;
   color: #006bff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 26px;
+}
+
+.bot-avatar img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
 }
 
 .bot-message-new {
@@ -273,8 +283,6 @@
   font-size: 11px;
 }
 
-
-
 /* LOGIN OVERLAY */
 
 .login-overlay {
@@ -329,7 +337,8 @@
   }
 
   .robot-top {
-    font-size: 34px;
+    width: 34px;
+    height: 34px;
   }
 
   .header-icon {
@@ -342,6 +351,11 @@
 
   .bot-avatar {
     margin-bottom: -4px;
+  }
+
+  .bot-avatar img {
+    width: 34px;
+    height: 34px;
   }
 
   .overlay-content h2 {

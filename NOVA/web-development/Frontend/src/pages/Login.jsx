@@ -33,31 +33,8 @@ const Login = () => {
 
       localStorage.setItem("token", token);
 
-      try {
-        const profileResponse = await api.get("/api/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        const { mother, child } = profileResponse.data.data;
-
-        alert("Login berhasil");
-
-        if (mother && child) {
-          navigate("/dashboard");
-        } else {
-          navigate("/");
-        }
-      } catch (profileError) {
-        console.error(
-          "Profile check error:",
-          profileError.response?.data || profileError.message
-        );
-
-        alert("Login berhasil");
-        navigate("/dashboard");
-      }
+      alert("Login berhasil");
+      navigate("/landing");
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
 

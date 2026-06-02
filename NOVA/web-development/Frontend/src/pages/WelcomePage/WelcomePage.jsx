@@ -123,7 +123,7 @@ export default function WelcomePage() {
               Mulai perjalanan Anda bersama NOVA — gratis dan mudah digunakan.
             </p>
             <Link
-              to="/register"
+              to="/login"
               className="welcome-btn welcome-btn--primary welcome-btn--glow"
             >
               Mulai Sekarang

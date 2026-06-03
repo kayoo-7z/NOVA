@@ -121,15 +121,11 @@ const Landing = () => {
       <section className="nova-hero">
         <div className="nova-hero-content">
           <h1>
-            Lorem Ipsum
-            <br />
-            dolor sit amet Lorem
+            NOVA - Sahabat Tumbuh Kembang Anak
           </h1>
 
           <p>
-            Lorem Ipsum
-            <br />
-            dolor sit amet Lorem
+            Platform Kesehatan Anak
           </p>
         </div>
 

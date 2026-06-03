@@ -138,35 +138,64 @@ const Landing = () => {
         </div>
       </section>
 
-      <section className="nova-ai-shortcut-section" id="features">
-        <div
-          className="nova-ai-shortcut-card"
-          onClick={() => navigate("/novition")}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              navigate("/novition");
-            }
-          }}
-        >
-          <div className="nova-ai-shortcut-icon">
-            <img src={aiIcon} alt="AI Assistant" className="nova-ai-icon" />
+      <section className="nova-features-grid-section" id="features">
+        <div className="nova-features-header">
+          <h2>Fitur Unggulan</h2>
+          <p>Pantau tumbuh kembang anak dengan lebih mudah dan cerdas</p>
+        </div>
+        <div className="nova-features-grid">
+          {/* Card 1 */}
+          <div className="nova-feature-card">
+            <div className="nova-feature-icon-wrapper">
+              <i className="fa-solid fa-utensils"></i>
+            </div>
+            <h3>Smart Nutrition Scanner</h3>
+            <p>Fitur untuk mengunggah atau memotret makanan anak guna dianalisis AI dan menghasilkan estimasi kandungan nutrisi harian.</p>
+            <button className="nova-coming-soon-btn" disabled>Coming Soon</button>
           </div>
-
-          <p>
-            Hallo aku asisten AI, yuk tap aku untuk cari tau tumbuh kembang anak
-          </p>
-
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              navigate("/novition");
+          {/* Card 2 */}
+          <div className="nova-feature-card">
+            <div className="nova-feature-icon-wrapper">
+              <i className="fa-solid fa-chart-line"></i>
+            </div>
+            <h3>Monthly Growth Check-In</h3>
+            <p>Fitur pemantauan bulanan untuk mencatat pertumbuhan anak dan menganalisis risiko stunting secara dini.</p>
+            <button className="nova-coming-soon-btn" disabled>Coming Soon</button>
+          </div>
+          {/* Card 3 */}
+          <div className="nova-feature-card">
+            <div className="nova-feature-icon-wrapper">
+              <i className="fa-solid fa-bell"></i>
+            </div>
+            <h3>Smart Health Reminder</h3>
+            <p>Fitur pengingat otomatis untuk menjadwalkan aktivitas kesehatan anak dengan notifikasi yang disesuaikan usia dan kebutuhannya.</p>
+            <button className="nova-coming-soon-btn" disabled>Coming Soon</button>
+          </div>
+          {/* Card 4 - Novition */}
+          <div 
+            className="nova-feature-card nova-feature-active" 
+            onClick={() => navigate("/novition")}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") navigate("/novition");
             }}
           >
-            Chat
-          </button>
+            <div className="nova-feature-icon-wrapper active-icon">
+              <img src={aiIcon} alt="AI Assistant" />
+            </div>
+            <h3>Novition</h3>
+            <p>Fitur untuk memprediksi status stunting pada anak menggunakan AI.</p>
+            <button 
+              className="nova-use-now-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/novition");
+              }}
+            >
+              Gunakan Sekarang
+            </button>
+          </div>
         </div>
       </section>
 

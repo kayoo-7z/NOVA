@@ -179,8 +179,13 @@ button {
 }
 
 @keyframes floatCircleHero {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(-40px) scale(1.05); }
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    transform: translateY(-40px) scale(1.05);
+  }
 }
 
 .nova-hero-content {
@@ -236,7 +241,6 @@ button {
   object-fit: contain;
   display: block;
   transform: translateY(1px);
-  animation: floatImageHero 4s infinite ease-in-out alternate;
 }
 
 @keyframes fadeUpHero {
@@ -244,15 +248,11 @@ button {
     opacity: 0;
     transform: translateY(30px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-@keyframes floatImageHero {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-15px); }
 }
 
 /* FEATURE SECTION */
@@ -749,11 +749,11 @@ button {
 
 @media (max-width: 768px) {
   .nova-navbar {
-    height: auto;
+    height: 82px;
     min-height: 82px;
-    padding: 18px 24px;
+    padding: 0 24px;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 0;
     justify-items: center;
   }
 
@@ -762,12 +762,22 @@ button {
   }
 
   .nova-nav-menu {
-    gap: 44px;
-    flex-wrap: wrap;
+    display: none;
   }
 
   .nova-logout-button {
-    justify-self: center;
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 999;
+    justify-self: unset;
+    padding: 10px 14px;
+    font-size: 13px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .nova-logout-button i {
+    font-size: 16px;
   }
 
   .nova-ai-nav-button {
@@ -936,7 +946,7 @@ button {
   }
 
   .nova-footer {
-    padding: 32px 28px;
+    padding: 32px 28px 90px;
   }
 
   .nova-socials {
@@ -946,16 +956,38 @@ button {
 
 @media (max-width: 480px) {
   .nova-navbar {
-    padding: 16px 18px;
+    height: 76px;
+    min-height: 76px;
+    padding: 0 18px;
+  }
+
+  .nova-logo {
+    font-size: 32px;
   }
 
   .nova-nav-menu {
     gap: 26px;
   }
 
+  .nova-logout-button {
+    right: 16px;
+    bottom: 16px;
+    padding: 9px 12px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .nova-logout-button i {
+    font-size: 14px;
+  }
+
   .nova-nav-menu button,
   .nova-login-button {
     font-size: 15px;
+  }
+
+  .nova-hero {
+    min-height: calc(100vh - 76px);
   }
 
   .nova-hero-content h1 {
@@ -1071,6 +1103,7 @@ button {
     flex-direction: column;
     gap: 24px;
     text-align: center;
+    padding-bottom: 96px;
   }
 
   .nova-socials {

@@ -11,13 +11,7 @@ import {
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Landing from "./pages/Landing";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Novition from "./pages/Novition";
-import NovitionHasil from "./pages/NovitionHasil";
-import LengkapiData from "./pages/LengkapiData";
-import Profile from "./pages/Profile";
-import DetailArtikel from "./pages/DetailArtikel";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 
 const MainLayout = () => {
@@ -88,10 +82,6 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route element={<MainLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/novition-hasil" element={<NovitionHasil />} />
-            <Route path="/lengkapi-data" element={<LengkapiData />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/artikel/:id" element={<DetailArtikel />} />
           </Route>
         </Route>
 

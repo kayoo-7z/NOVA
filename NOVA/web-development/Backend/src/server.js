@@ -4,8 +4,6 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 import authRoutes from './routes/authRoutes.js';
-import profileRoutes from './routes/profileRoutes.js';
-import articleRoutes from './routes/articleRoutes.js';
 import predictRoutes from './routes/predictRoutes.js';
 import errorMiddleware from './middlewares/errorMiddleware.js';
 

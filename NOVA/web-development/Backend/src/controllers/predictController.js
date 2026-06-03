@@ -1,7 +1,7 @@
 import pool from "../config/db.js";
-import { callHFModel } from "../services/huggingfaceSpaceService.js";
+import { callHFModel } from "../services/huggingFaceSpaceService.js";
 
-console.log("✅ predictController.js loaded correctly");
+const HISTORY_LIMIT = 20;
 
 const normalizeGenderForAI = (gender) => {
   if (gender === "Laki-laki") return "Male";
@@ -41,6 +41,22 @@ const generateAiResponseText = ({
   return `Hasil analisis menunjukkan bahwa ${childName} berada pada kategori ${
     riskCategory || "Risiko Rendah"
   } dengan tingkat keyakinan ${confidence}. Nilai BMI yang dihitung adalah ${bmi}. Tetap jaga pola makan bergizi, imunisasi, serta pemantauan pertumbuhan secara rutin.`;
+};
+
+const deleteOldPredictionHistory = async (userId) => {
+  await pool.query(
+    `
+    DELETE FROM stunting_analyses
+    WHERE id IN (
+      SELECT id
+      FROM stunting_analyses
+      WHERE user_id = $1
+      ORDER BY created_at DESC, id DESC
+      OFFSET $2
+    )
+    `,
+    [userId, HISTORY_LIMIT]
+  );
 };
 
 export const predict = async (req, res, next) => {
@@ -163,6 +179,8 @@ export const predict = async (req, res, next) => {
       ]
     );
 
+    await deleteOldPredictionHistory(userId);
+
     return res.status(201).json({
       success: true,
       status: "success",
@@ -213,9 +231,10 @@ export const getPredictionHistory = async (req, res, next) => {
         updated_at
       FROM stunting_analyses
       WHERE user_id = $1
-      ORDER BY created_at DESC
+      ORDER BY created_at DESC, id DESC
+      LIMIT $2
       `,
-      [userId]
+      [userId, HISTORY_LIMIT]
     );
 
     return res.status(200).json({

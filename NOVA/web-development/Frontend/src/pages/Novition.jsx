@@ -22,12 +22,39 @@ export default function Novition() {
 
   const [result, setResult] = useState(null);
   const [history, setHistory] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isLoadingHistory, setIsLoadingHistory] = useState(false);
 
   const getToken = () => {
     return localStorage.getItem("token");
   };
+
+  const filteredHistory = history.filter((item) => {
+    const query = searchQuery.toLowerCase().trim();
+
+    if (!query) {
+      return true;
+    }
+
+    const createdAtText = item.created_at
+      ? new Date(item.created_at).toLocaleString("id-ID").toLowerCase()
+      : "";
+
+    const childName = item.child_name
+      ? item.child_name.toLowerCase()
+      : "";
+
+    const riskCategory = item.risk_category
+      ? item.risk_category.toLowerCase()
+      : "";
+
+    return (
+      createdAtText.includes(query) ||
+      childName.includes(query) ||
+      riskCategory.includes(query)
+    );
+  });
 
   const handleUnauthorized = useCallback(() => {
     alert("Sesi login sudah habis. Silakan login kembali.");
@@ -353,7 +380,13 @@ export default function Novition() {
             Chat Baru <FaEdit />
           </button>
 
-          <input type="text" className="search-bar" placeholder="Search" />
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Cari waktu, nama, atau kategori"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
 
           <p>
             <strong>Terbaru</strong>
@@ -362,24 +395,28 @@ export default function Novition() {
           {isLoadingHistory ? (
             <p>Memuat riwayat...</p>
           ) : history.length > 0 ? (
-            <div className="history-list">
-              {history.map((item) => (
-                <button
-                  type="button"
-                  className="history-item"
-                  key={item.id}
-                  onClick={() => handleSelectHistory(item)}
-                >
-                  <p>{item.child_name}</p>
-                  <span>{item.risk_category}</span>
-                  <small>
-                    {item.created_at
-                      ? new Date(item.created_at).toLocaleString("id-ID")
-                      : ""}
-                  </small>
-                </button>
-              ))}
-            </div>
+            filteredHistory.length > 0 ? (
+              <div className="history-list">
+                {filteredHistory.map((item) => (
+                  <button
+                    type="button"
+                    className="history-item"
+                    key={item.id}
+                    onClick={() => handleSelectHistory(item)}
+                  >
+                    <p>{item.child_name}</p>
+                    <span>{item.risk_category}</span>
+                    <small>
+                      {item.created_at
+                        ? new Date(item.created_at).toLocaleString("id-ID")
+                        : ""}
+                    </small>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <p>Riwayat tidak ditemukan.</p>
+            )
           ) : (
             <p>Riwayat analisis akan muncul di sini...</p>
           )}

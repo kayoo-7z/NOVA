@@ -27,8 +27,6 @@ const port = process.env.PORT || 3000;
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api', profileRoutes);
-app.use('/api', articleRoutes);
 app.use('/api', predictRoutes);
 
 // 404 handler
